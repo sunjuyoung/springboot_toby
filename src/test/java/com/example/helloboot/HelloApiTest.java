@@ -30,7 +30,22 @@ public class HelloApiTest {
         //body Hello Spring
         assertThat(result.getBody()).isEqualTo("Hello Spring");
 
+        //수행속도
 
+    }
+
+    @Test
+    void helloApiFailed(){
+        //http localhost:8080/hello?name=Spring
+
+        TestRestTemplate rest = new TestRestTemplate();
+
+        ResponseEntity<String> result =
+                rest.getForEntity("http://localhost:8080/hello?name=", String.class);
+
+
+        //status
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 }
