@@ -28,7 +28,7 @@ public class HelloApiTest {
         //text/plain;charset=ISO-8859-1"                                                //expected: "text/plain"
         assertThat(result.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE);
         //body Hello Spring
-        assertThat(result.getBody()).isEqualTo("Hello Spring");
+        assertThat(result.getBody()).isEqualTo("*Hello Spring*");
 
         //수행속도
 
@@ -42,8 +42,6 @@ public class HelloApiTest {
 
         ResponseEntity<String> result =
                 rest.getForEntity("http://localhost:8080/hello?name=", String.class);
-
-
         //status
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
